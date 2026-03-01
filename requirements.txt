@@ -1,7 +1,12 @@
+# local custom ROCm Python package index (gfx1031):
+--index-url file:///media/christoph/some_space/Compute/TheRock_gfx1031/build-stage2/python_packages_gfx1031/dist/simple
+
+# install matching ROCm Python packages first:
+rocm[libraries,devel]==7.11.0a20260301
+
 # torch always from the local custom ROCm 7.11 wheel:
-torch @ file:///opt/rocm/wheels/pytorch_rocm711/torch-2.11.0a0+git3b6829f-cp312-cp312-linux_x86_64.whl
+torch @ file:///opt/rocm/wheels/pytorch_rocm711/torch-2.11.0a0+devrocm20260301-cp312-cp312-linux_x86_64.whl
 
 # deps from the internet are fine:
 openai-whisper
 numpy
-

@@ -11,12 +11,14 @@ Minimal Whisper example that:
 
 - `/opt/rocm` installed and working (`/opt/rocm/bin/rocminfo`)
 - The custom torch wheel exists:
-  - `/opt/rocm/wheels/pytorch_rocm711/torch-2.11.0a0+git3b6829f-cp312-cp312-linux_x86_64.whl`
+  - `/opt/rocm/wheels/pytorch_rocm711/torch-2.11.0a0+devrocm20260301-cp312-cp312-linux_x86_64.whl`
+- Local custom ROCm Python index exists:
+  - `/media/christoph/some_space/Compute/TheRock_gfx1031/build-stage2/python_packages_gfx1031/dist/simple/`
 
 ## Setup
 
 ```bash
-cd /media/christoph/some_space/rocm711_whisper_example
+cd /media/christoph/some_space/Compute/rocm711_whisper_example
 python3 -m venv .venv
 source .venv/bin/activate
 
@@ -45,4 +47,3 @@ WHISPER_MODEL=base AUDIO_TARGET_S=60 python run.py
 - First run downloads the Whisper model into your cache (expected).
 - The script loads the model checkpoint on **CPU first** and then moves it to CUDA/HIP.
   This avoids crashes seen when deserializing directly to GPU on some ROCm/torch combos.
-
