@@ -10,18 +10,21 @@ Minimal Whisper example that:
 ## Prereqs
 
 - `/opt/rocm` installed and working (`/opt/rocm/bin/rocminfo`)
-- The custom torch wheel exists:
-  - `/opt/rocm/wheels/pytorch_rocm711/torch-2.11.0a0+devrocm20260301-cp312-cp312-linux_x86_64.whl`
-- Local custom ROCm Python index exists:
-  - `/media/christoph/some_space/Compute/TheRock_gfx1031/build-stage2/python_packages_gfx1031/dist/simple/`
+- The custom torch wheel exists under `/opt/rocm/wheels/pytorch_rocm711/` or under `${THEROCK_ROOT}/validation/workspace/cache/wheels/pytorch_rocm711/`.
 
 ## Setup
 
 ```bash
-cd /media/christoph/some_space/Compute/rocm711_whisper_example
-python3 -m venv .venv
-source .venv/bin/activate
+cd /path/to/ML-Lab/examples/rocm711_whisper_example
+export THEROCK_ROOT=/path/to/TheRock_gfx1031
 
+python3 -m venv .venv
+
+"${THEROCK_ROOT}/validation/scripts/pytorch_rocm/install_pytorch_rocm_wheel_to_venv.sh" \
+  --venv .venv \
+  --rocm-prefix /opt/rocm
+
+. .venv/bin/activate_rocm_pytorch.sh
 python -m pip install -U pip
 python -m pip install -r requirements.txt
 ```
@@ -29,8 +32,8 @@ python -m pip install -r requirements.txt
 ## Run (default)
 
 ```bash
-source .venv/bin/activate
-python run.py
+. .venv/bin/activate_rocm_pytorch.sh
+python3 run.py
 ```
 
 Defaults:
