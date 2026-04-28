@@ -1,5 +1,4 @@
 # Project-local Python dependencies only.
-# Install torch first via:
-#   ${THEROCK_ROOT}/validation/scripts/pytorch_rocm/install_pytorch_rocm_wheel_to_venv.sh
+# Install torch first with ./setup_rocm_venv.sh.
 openai-whisper
 numpy<2

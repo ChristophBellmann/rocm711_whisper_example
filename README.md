@@ -10,19 +10,14 @@ Minimal Whisper example that:
 ## Prereqs
 
 - `/opt/rocm` installed and working (`/opt/rocm/bin/rocminfo`)
-- The custom torch wheel exists under `/opt/rocm/wheels/pytorch_rocm711/` or under `${THEROCK_ROOT}/validation/workspace/cache/wheels/pytorch_rocm711/`.
+- The custom torch wheel exists under `/opt/rocm/wheels/pytorch_rocm711/`.
 
 ## Setup
 
 ```bash
 cd /path/to/ML-Lab/examples/rocm711_whisper_example
-export THEROCK_ROOT=/path/to/TheRock_gfx1031
 
-python3 -m venv .venv
-
-"${THEROCK_ROOT}/validation/scripts/pytorch_rocm/install_pytorch_rocm_wheel_to_venv.sh" \
-  --venv .venv \
-  --rocm-prefix /opt/rocm
+./setup_rocm_venv.sh
 
 . .venv/bin/activate_rocm_pytorch.sh
 python -m pip install -U pip
