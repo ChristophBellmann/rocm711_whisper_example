@@ -56,6 +56,11 @@ def _maybe_reexec_with_rocm_env() -> None:
     if os.path.exists(libomp) and libomp not in cur.split(":"):
         env["LD_PRELOAD"] = ":".join([libomp] + ([cur] if cur else []))
 
+    # Preload librocm_smi64 so libtorch_hip can resolve rsmi_init.
+    rsmi = f"{rocm}/lib/librocm_smi64.so"
+    if os.path.exists(rsmi) and rsmi not in cur.split(":"):
+        env["LD_PRELOAD"] = ":".join([rsmi] + ([env["LD_PRELOAD"]] if env.get("LD_PRELOAD") else []))
+
     if (
         env.get("PATH") != os.environ.get("PATH")
         or env.get("LD_LIBRARY_PATH") != os.environ.get("LD_LIBRARY_PATH")
