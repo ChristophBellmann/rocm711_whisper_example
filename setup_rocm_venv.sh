@@ -89,9 +89,6 @@ export HIP_PATH="\${HIP_PATH:-\$ROCM_PATH}"
 export HSA_PATH="\${HSA_PATH:-\$ROCM_PATH}"
 export PATH="\$ROCM_PATH/bin:\$ROCM_PATH/llvm/bin:\$VENV_DIR/bin:\${PATH:-}"
 export LD_LIBRARY_PATH="\$ROCM_PATH/lib:\$ROCM_PATH/lib64:\$ROCM_PATH/lib/llvm/lib:\$ROCM_PATH/lib/host-math/lib:\$ROCM_PATH/lib/rocm_sysdeps/lib:\$ROCM_PATH/llvm/lib:\${LD_LIBRARY_PATH:-}"
-if [[ -f "\$ROCM_PATH/lib/llvm/lib/libomp.so" ]]; then
-  export LD_PRELOAD="\$ROCM_PATH/lib/llvm/lib/libomp.so\${LD_PRELOAD:+:\${LD_PRELOAD}}"
-fi
 export USE_ROCM_HIPBLASLT="\${USE_ROCM_HIPBLASLT:-0}"
 if [[ -z "\${HIP_DEVICE_LIB_PATH:-}" ]]; then
   if [[ -d "\$ROCM_PATH/lib/llvm/amdgcn/bitcode" ]]; then
