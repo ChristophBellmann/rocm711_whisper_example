@@ -1,4 +1,4 @@
 # Project-local Python dependencies only.
 # Install torch first with ./setup_rocm_venv.sh.
 openai-whisper
-numpy<2
+numpy>=2,<3
