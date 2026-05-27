@@ -88,6 +88,13 @@ fi
 source "${VENV_DIR}/bin/activate"
 python -m pip install -U pip setuptools wheel
 python -m pip install --force-reinstall "${NUMPY_SPEC}"
+python -m pip install \
+  filelock \
+  "typing-extensions>=4.10.0" \
+  "sympy>=1.13.3" \
+  "networkx>=2.5.1" \
+  jinja2 \
+  "fsspec>=0.8.5"
 python -m pip install --upgrade --force-reinstall --no-deps "${TORCH_WHEEL}"
 
 torch_hip_so="${VENV_DIR}/lib/python3.12/site-packages/torch/lib/libtorch_hip.so"
